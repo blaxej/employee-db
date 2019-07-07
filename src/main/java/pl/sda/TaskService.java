@@ -16,9 +16,15 @@ public class TaskService {
         Optional<Employee> employee = employeeDB.findById(employeeId);
         Optional<Task> task = taskDB.findById(taskId);
         employee.ifPresent(employeeFromDb -> {
-            task.ifPresent(taskFromDb -> {
-                employeeFromDb.setTask(taskFromDb);
-            });
+            if (employeeFromDb.getTask() == null) {
+                task.ifPresent(taskFromDb -> {
+                    if (taskFromDb.getEmployee() == null) {
+                        employeeFromDb.setTask(taskFromDb);
+                        taskFromDb.setEmployee(employeeFromDb);
+                    } else
+                        throw new TaskAlreadyAssignedException("Task already assigned to " + taskFromDb.getEmployee());
+                });
+            } else throw new EmployeeAlreadyBusyException("Employee is already busy" + employeeFromDb.getTask());
         });
     }
 
