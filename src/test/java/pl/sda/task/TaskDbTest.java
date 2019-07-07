@@ -1,7 +1,10 @@
-package pl.sda;
+package pl.sda.task;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import pl.sda.DbTestUtils;
+import pl.sda.task.Task;
+import pl.sda.task.TaskDB;
 
 import java.util.Optional;
 

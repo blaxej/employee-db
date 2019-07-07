@@ -1,4 +1,4 @@
-package pl.sda;
+package pl.sda.task;
 
 public class TaskAlreadyAssignedException extends RuntimeException {
     public TaskAlreadyAssignedException(String message) {

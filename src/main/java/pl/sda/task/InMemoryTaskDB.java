@@ -1,4 +1,4 @@
-package pl.sda;
+package pl.sda.task;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -1,4 +1,4 @@
-package pl.sda;
+package pl.sda.employee;
 
 public class EmployeeAlreadyBusyException extends RuntimeException {
     public EmployeeAlreadyBusyException(String message) {

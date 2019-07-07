@@ -1,4 +1,6 @@
-package pl.sda;
+package pl.sda.employee;
+
+import pl.sda.task.Task;
 
 import java.util.Objects;
 
@@ -6,6 +8,19 @@ public class Employee {
     private long id;
     private String name;
     private Task task;
+
+    //tworzymy metode determinujaca format danych
+    //dla kazdej z lini tworzonego pliku tekstowego
+
+    public String asLine() {
+        return id + "," + name + "," + extractTaskId();
+    }
+
+    private Long extractTaskId() {
+        if(task != null)
+            return task.getId();
+        return null;
+    }
 
     public Employee(String name) {
 
