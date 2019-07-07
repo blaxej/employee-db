@@ -15,8 +15,8 @@ public class AssigninTasksTest {
     @Test
     void addTaskToEmployee() {
         //given
-        EmployeeDB employeeDB = new EmployeeDB();
-        TaskDB taskDB = new TaskDB();
+        EmployeeDb employeeDB = DbTestUtils.emptyInMemoryEmployeeDb();
+        TaskDB taskDB = DbTestUtils.emptyInMemmoryTaskDb();
         TaskService taskService = new TaskService(employeeDB, taskDB);
         // add employee Andrzej...
         Employee employee = new Employee("Andrzej");
@@ -39,8 +39,8 @@ public class AssigninTasksTest {
     @Test
     void assignBusyTaskToAnotherEmployeeFail() {
         //given
-        EmployeeDB employeeDB = new EmployeeDB();
-        TaskDB taskDB = new TaskDB();
+        EmployeeDb employeeDB = DbTestUtils.emptyInMemoryEmployeeDb();
+        TaskDB taskDB = DbTestUtils.emptyInMemmoryTaskDb();
         TaskService taskService = new TaskService(employeeDB, taskDB);
         Task task = new Task("fixing bug");
         // add employee Andrzej...
@@ -67,8 +67,8 @@ public class AssigninTasksTest {
     @Test
     void assignTaskToEmployeeWithTaskShouldFail() {
         //given
-        EmployeeDB employeeDB = new EmployeeDB();
-        TaskDB taskDB = new TaskDB();
+        EmployeeDb employeeDB = DbTestUtils.emptyInMemoryEmployeeDb();
+        TaskDB taskDB = DbTestUtils.emptyInMemmoryTaskDb();
         TaskService taskService = new TaskService(employeeDB, taskDB);
         Task firstTask = new Task("fixing bug");
         Task secondTask = new Task("it depends");
