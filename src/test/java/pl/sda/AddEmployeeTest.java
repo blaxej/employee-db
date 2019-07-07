@@ -24,7 +24,8 @@ public class AddEmployeeTest {
 
 		//then
 		Iterable<Employee> allEmployees = employeeDB.findAll();
-		assertThat(allEmployees).containsOnly(wojtek);
+		assertThat(allEmployees).hasSize(1);
+		assertThat(allEmployees.iterator().next().getName()).isEqualTo("Wojtek");
 
 	}
 }

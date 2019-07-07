@@ -30,7 +30,8 @@ public class FindByNameTest {
 
 
 		//then
-		assertThat(returned).containsOnly(employee1);
+		assertThat(returned).hasSize(1);
+		assertThat(returned.iterator().next().getName()).isEqualTo("Karolina");
 	}
 
 }

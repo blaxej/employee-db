@@ -2,29 +2,41 @@ package pl.sda;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class EmployeeDB {
 
-	private List<Employee> employeeList;
+    private List<Employee> employeeList;
 
-	public EmployeeDB() {
-		employeeList = new ArrayList<>();
-	}
+    public EmployeeDB() {
+        employeeList = new ArrayList<>();
+    }
 
-	public void add(Employee employee) {
-		employeeList.add(employee);
+    public long add(Employee employee) {
+        long id = generateId();
+        Employee employeeCopy = new Employee(id, employee.getName());
+        employeeList.add(employeeCopy);
+        return id;
+    }
 
-	}
 
-	public Iterable<Employee> findAll() {
+    public Iterable<Employee> findAll() {
 
-		return employeeList;
-	}
+        return employeeList;
+    }
 
-	public Iterable<Employee> find(String name) {
-		return employeeList.stream()
-			.filter(employee -> employee.getName().equals(name))
-			.collect(Collectors.toList());
-	}
+    public Iterable<Employee> find(String name) {
+        return employeeList.stream()
+                .filter(employee -> employee.getName().equals(name))
+                .collect(Collectors.toList());
+    }
+
+    private long generateId() {
+        return employeeList.size() + 1;
+    }
+
+    public Optional<Employee> findById(long employeeId) {
+        return employeeList.stream().filter(employee -> employee.getId() == employeeId).findAny();
+    }
 }
