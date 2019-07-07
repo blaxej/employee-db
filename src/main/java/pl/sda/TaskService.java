@@ -4,15 +4,23 @@ import java.util.Optional;
 
 public class TaskService {
 
-    private final EmployeeDB employeeDB;
+    private final EmployeeDb employeeDB;
     private final TaskDB taskDB;
 
-    public TaskService(EmployeeDB employeeDB, TaskDB taskDB) {
+    public TaskService(EmployeeDb employeeDB, TaskDB taskDB) {
         this.employeeDB = employeeDB;
         this.taskDB = taskDB;
     }
 
-    public void assignTaskToEmployee(long taskId, long employeeId) {
+    /**
+     * Assigns a new task to the employee.
+     *
+     * @param taskId     task id
+     * @param employeeId employee id
+     * @throws TaskAlreadyAssignedException if task is already assigned to some other user
+     * @throws EmployeeAlreadyBusyException when target employee is already working on another task
+     */
+    public void assignTaskToEmployee(long taskId, long employeeId) throws TaskAlreadyAssignedException, EmployeeAlreadyBusyException {
         Optional<Employee> employee = employeeDB.findById(employeeId);
         Optional<Task> task = taskDB.findById(taskId);
         employee.ifPresent(employeeFromDb -> {

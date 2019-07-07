@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class EmployeeDB {
+public class InMemoryEmployeeDB implements EmployeeDb {
 
     private List<Employee> employeeList;
 
-    public EmployeeDB() {
+    public InMemoryEmployeeDB() {
         employeeList = new ArrayList<>();
     }
 
@@ -26,7 +26,7 @@ public class EmployeeDB {
         return employeeList;
     }
 
-    public Iterable<Employee> find(String name) {
+    public Iterable<Employee> findAllByName(String name) {
         return employeeList.stream()
                 .filter(employee -> employee.getName().equals(name))
                 .collect(Collectors.toList());
