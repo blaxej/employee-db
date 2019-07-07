@@ -9,6 +9,19 @@ public class Employee {
     private String name;
     private Task task;
 
+    //tworzymy metode determinujaca format danych
+    //dla kazdej z lini tworzonego pliku tekstowego
+
+    public String asLine() {
+        return id + "," + name + "," + extractTaskId();
+    }
+
+    private Long extractTaskId() {
+        if(task != null)
+            return task.getId();
+        return null;
+    }
+
     public Employee(String name) {
 
 

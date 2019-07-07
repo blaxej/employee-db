@@ -9,13 +9,14 @@ public interface EmployeeDb {
      *
      * @param employee an employee to add
      * @return the generated id
+     * @throws EmployeeDbException
      */
-    long add(Employee employee);
+    long add(Employee employee) throws EmployeeDbException;
 
-    Iterable<Employee> findAll();
+    Iterable<Employee> findAll() throws EmployeeDbException;
 
-    Iterable<Employee> findAllByName(String name);
+    Iterable<Employee> findAllByName(String name) throws EmployeeDbException;
 
-    Optional<Employee> findById(long id);
+    Optional<Employee> findById(long id) throws EmployeeDbException;
 
 }
