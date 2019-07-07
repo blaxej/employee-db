@@ -1,8 +1,8 @@
-package pl.sda;
+package pl.sda.employee;
 
 import java.util.Optional;
 
-interface EmployeeDb {
+public interface EmployeeDb {
 
     /**
      * Adds a new employee.

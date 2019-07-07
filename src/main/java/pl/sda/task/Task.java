@@ -1,4 +1,6 @@
-package pl.sda;
+package pl.sda.task;
+
+import pl.sda.employee.Employee;
 
 import java.util.Objects;
 
