@@ -28,7 +28,7 @@ public class AssigninTasksTest {
         Employee employee = new Employee("Andrzej");
         long employeeId = employeeDB.add(employee);
         // ... and task fixing bug to the database
-        Task task = new Task("fixing bug");
+        Task task = taskWithTitle("fixing bug");
         long taskId = taskDB.add(task);
 
         // when
@@ -48,7 +48,7 @@ public class AssigninTasksTest {
         EmployeeDb employeeDB = DbTestUtils.emptyInMemoryEmployeeDb();
         TaskDB taskDB = DbTestUtils.emptyInMemmoryTaskDb();
         TaskService taskService = new TaskService(employeeDB, taskDB);
-        Task task = new Task("fixing bug");
+        Task task = taskWithTitle("fixing bug");
         // add employee Andrzej...
         Employee employeeWithTask = new Employee("Andrzej");
         Employee employeeWithoutTask = new Employee("Bożydar");
@@ -76,8 +76,8 @@ public class AssigninTasksTest {
         EmployeeDb employeeDB = DbTestUtils.emptyInMemoryEmployeeDb();
         TaskDB taskDB = DbTestUtils.emptyInMemmoryTaskDb();
         TaskService taskService = new TaskService(employeeDB, taskDB);
-        Task firstTask = new Task("fixing bug");
-        Task secondTask = new Task("it depends");
+        Task firstTask = new Task("fixing bug","    jhvljhfjl"," fjfdj",true);
+        Task secondTask = new Task("it depends","    jhvljhfjl"," fjfdj",false);
         // add employee Andrzej...
         Employee employee = new Employee("Andrzej");
         long employeeId = employeeDB.add(employee);
@@ -90,5 +90,9 @@ public class AssigninTasksTest {
         //then
         assertThat(exception).isNotNull();
         assertThat(taskService.getEmployeeTask(employeeId).get().getTitle()).isEqualTo("fixing bug");
+    }
+
+    private Task taskWithTitle(String title) {
+        return DbTestUtils.taskWithTitle(title);
     }
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -28,7 +29,7 @@ public class FileEmployeeDb implements EmployeeDb {
         try {
             long id = Files.readAllLines(path).size();
             Employee employeeCopy = new Employee(id, employee.getName());
-            Files.write(path, Arrays.asList(employeeCopy.asLine()), charset);
+            Files.write(path, Arrays.asList(employeeCopy.asLine()), charset, StandardOpenOption.APPEND);
             /*lapiemy wyjatek IOException i zwracamy nasz wyjatek z wiadomoscia
             co poszlo nie tak. Dodatkowo poprzez zapis "employee" wiemy ktorego
             pracownika nie udalo sie dodac, a "e" daje nam informacje o tym
@@ -46,7 +47,8 @@ public class FileEmployeeDb implements EmployeeDb {
         try {
             return Files.lines(path, charset).map(line -> {
                 String[] employeeData = line.split(",");
-                Employee employee = new Employee(Long.parseLong(employeeData[0]), employeeData[1]);
+                Employee employee = new Employee(Long.parseLong(employeeData[0])
+                        , employeeData[1]);
                 return employee;
             }).collect(Collectors.toList());
         } catch (IOException e) {

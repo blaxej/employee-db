@@ -31,6 +31,21 @@ public class InMemoryTaskDB implements TaskDB {
                 .findAny();
     }
 
+    @Override
+    public Optional<Task> findByDescription(String description) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Task> findByType(String type) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Task> findByPrioryty(boolean prioryty) {
+        return Optional.empty();
+    }
+
     private long generateId() {
         return tasks.size() + 1;
     }

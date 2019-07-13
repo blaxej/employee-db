@@ -41,7 +41,7 @@ public class TaskDbTest {
     void add() {
         //given
         TaskDB taskDB = emptyTaskDb();
-        Task task = new Task("title");
+        Task task = DbTestUtils.taskWithTitle("title");
         //when
         taskDB.add(task);
         Iterable<Task> result = taskDB.findAll();
@@ -60,11 +60,11 @@ public class TaskDbTest {
     void findById() {
         //given
         TaskDB taskDB = emptyTaskDb();
-        Task task1 = new Task("task1 title");
+        Task task1 = DbTestUtils.taskWithTitle("task1 title");
         taskDB.add(task1);
-        Task task2 = new Task("task2 title");
+        Task task2 = DbTestUtils.taskWithTitle("task2 title");
         long task2Id = taskDB.add(task2);
-        Task task3 = new Task("task3 title");
+        Task task3 = DbTestUtils.taskWithTitle("task3 title");
         taskDB.add(task3);
 
         //when

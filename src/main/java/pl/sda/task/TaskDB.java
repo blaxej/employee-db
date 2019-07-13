@@ -8,4 +8,11 @@ public interface TaskDB {
     Iterable<Task> findAll();
 
     Optional<Task> findById(long id);
+
+    Optional<Task> findByDescription (String description);
+
+    Optional<Task> findByType (String type);
+
+    Optional<Task> findByPrioryty (boolean prioryty);
+
 }
