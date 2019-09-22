@@ -42,7 +42,7 @@ public class InMemoryTaskDB implements TaskDB {
     }
 
     @Override
-    public Optional<Task> findByPrioryty(boolean prioryty) {
+    public Optional<Task> findByPriority(boolean prioryty) {
         return Optional.empty();
     }
 

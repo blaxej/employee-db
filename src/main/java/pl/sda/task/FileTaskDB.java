@@ -64,7 +64,7 @@ public class FileTaskDB implements TaskDB {
     }
 
     @Override
-    public Optional<Task> findByPrioryty(boolean priority) {
+    public Optional<Task> findByPriority(boolean priority) {
         return findAllAsList().stream().filter(task -> task.isPriority() == priority)
                 .findAny();
     }

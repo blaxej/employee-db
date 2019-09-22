@@ -13,6 +13,6 @@ public interface TaskDB {
 
     Optional<Task> findByType (String type);
 
-    Optional<Task> findByPrioryty (boolean prioryty);
+    Optional<Task> findByPriority(boolean prioryty);
 
 }

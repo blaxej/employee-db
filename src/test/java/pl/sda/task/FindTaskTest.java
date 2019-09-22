@@ -3,11 +3,7 @@ package pl.sda.task;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pl.sda.DbTestUtils;
-import pl.sda.TaskService;
-import pl.sda.employee.Employee;
-import pl.sda.employee.EmployeeDb;
 
-import java.io.IOException;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,7 +25,7 @@ public class FindTaskTest {
         // when
         Iterable<Task> all = taskDB.findAll();
         Optional<Task> shit_happens = taskDB.findByDescription("shit happens");
-        Optional<Task> byPrioryty = taskDB.findByPrioryty(false);
+        Optional<Task> byPrioryty = taskDB.findByPriority(false);
         Optional<Task> bug2 = taskDB.findByType("Bug2");
 
         /// then
